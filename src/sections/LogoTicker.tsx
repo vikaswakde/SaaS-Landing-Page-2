@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import acme from "@/assets/logo-acme.png";
 import apex from "@/assets/logo-apex.png";
@@ -6,6 +8,8 @@ import echo from "@/assets/logo-echo.png";
 import pulse from "@/assets/logo-pulse.png";
 import quantum from "@/assets/logo-quantum.png";
 import Image from "next/image";
+
+import { motion } from "framer-motion";
 
 const logoData = [
   {
@@ -44,16 +48,35 @@ const LogoTicker = () => {
         [-webkit-mask-image:linear-gradient(to_right,transparent,black,transparent)]
         "
         >
-          <div className="flex gap-14 mx-auto flex-none">
+          <motion.div
+            className="flex gap-14 mx-auto flex-none pr-14"
+            animate={{
+              translateX: "-50%",
+            }}
+            transition={{
+              duration: 20,
+              ease: "linear",
+              repeat: Infinity,
+              repeatType: "loop",
+            }}
+          >
             {logoData.map(({ id, src }) => (
               <Image
                 key={id}
                 src={src}
                 alt="logo img"
-                className="logo-ticker-image"
+                className="logo-ticker-image "
               />
             ))}
-          </div>
+            {logoData.map(({ id, src }) => (
+              <Image
+                key={id}
+                src={src}
+                alt="logo img"
+                className="logo-ticker-image "
+              />
+            ))}
+          </motion.div>
         </div>
       </div>
     </div>

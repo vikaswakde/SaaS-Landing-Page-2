@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 
 import avatar1 from "@/assets/avatar-1.png";
@@ -10,8 +11,9 @@ import avatar7 from "@/assets/avatar-7.png";
 import avatar8 from "@/assets/avatar-8.png";
 import avatar9 from "@/assets/avatar-9.png";
 import Image from "next/image";
-import Testimonial from "./Testimonial";
 import { twMerge } from "tailwind-merge";
+
+import { motion } from "framer-motion";
 
 const testimonials = [
   {
@@ -77,33 +79,48 @@ const column3 = testimonials.slice(6, 9);
 const TestimonialsColumn = (props: {
   className?: string;
   testimonial: typeof testimonials;
+  duration?: number;
 }) => (
-  <div
-    className={twMerge(
-      "flex flex-col gap-6 py-5 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]",
-      props.className
-    )}
-  >
-    {props.testimonial.map(({ name, imageSrc, text, username }) => (
-      <div className="card" key={username}>
-        <p className="leading-[25px] font-medium text-base text-black/90 mt-5">
-          {text}
-        </p>
-        <div className="flex gap-5 items-center mt-5 ">
-          <Image
-            src={imageSrc}
-            alt="testimonial profile image"
-            height={40}
-            width={40}
-            className="h-10 w-10 rounded-full"
-          />
-          <div className="flex flex-col gap-1">
-            <h2 className="font-medium tracking-tight leading-5">{name}</h2>
-            <p className="leading-5 tracking-tight">{username}</p>
-          </div>
-        </div>
-      </div>
-    ))}
+  <div className={props.className}>
+    <motion.div
+      className={"flex flex-col gap-6 pb-6"}
+      animate={{
+        translateY: "-50%",
+      }}
+      transition={{
+        duration: props.duration || 10,
+        ease: "linear",
+        repeatType: "loop",
+        repeat: Infinity,
+      }}
+    >
+      {[...new Array(2)].fill(0).map((_, index) => (
+        <React.Fragment key={index}>
+          {props.testimonial.map(({ name, imageSrc, text, username }) => (
+            <div className="card" key={username}>
+              <p className="leading-[25px] font-medium text-base text-black/90 mt-5">
+                {text}
+              </p>
+              <div className="flex gap-5 items-center mt-5 ">
+                <Image
+                  src={imageSrc}
+                  alt="testimonial profile image"
+                  height={40}
+                  width={40}
+                  className="h-10 w-10 rounded-full"
+                />
+                <div className="flex flex-col gap-1">
+                  <h2 className="font-medium tracking-tight leading-5">
+                    {name}
+                  </h2>
+                  <p className="leading-5 tracking-tight">{username}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </React.Fragment>
+      ))}
+    </motion.div>
   </div>
 );
 
@@ -119,16 +136,17 @@ const Testimonials = () => {
           From intuitive design to powerful features, our app has become an
           essential tool for users all around the world
         </p>
-        <div className="flex justify-center gap-6">
-          {/* @ */}
-          <TestimonialsColumn testimonial={column1} />
+        <div className="flex justify-center gap-6 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[786px] overflow-hidden">
+          <TestimonialsColumn testimonial={column1} duration={15} />
           <TestimonialsColumn
             testimonial={column2}
-            className="hidden md:flex"
+            className="hidden md:block"
+            duration={19}
           />
           <TestimonialsColumn
-            testimonial={column2}
-            className="hidden lg:flex"
+            testimonial={column3}
+            className="hidden lg:block"
+            duration={17}
           />
         </div>
       </div>

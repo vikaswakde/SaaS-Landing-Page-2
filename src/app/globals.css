@@ -26,7 +26,7 @@
     [-webkit-background-clip:text];
   }
   .section-paragraph {
-    @apply text-[#010D3E] text-[22px] tracking-tight leading-[30px] md:w-[480px] lg:w-[550px] text-center mt-5;
+    @apply text-[#010D3E] text-[22px] tracking-tight leading-[30px] md:w-[480px]  text-center mt-5;
   }
   .card {
     @apply p-10 border border-[#222222]/15 rounded-3xl shadow-[0_7px_14px_#EAEAEA] max-w-sm w-full;

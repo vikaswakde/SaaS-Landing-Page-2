@@ -1,6 +1,9 @@
+"use client";
 import React from "react";
 import CheckIcon from "@/assets/check.svg";
 import { twMerge } from "tailwind-merge";
+
+import { motion } from "framer-motion";
 const pricingTiers = [
   {
     title: "Free",
@@ -91,10 +94,21 @@ const Pricing = () => {
                       {title}
                     </h3>
                     {popular && (
-                      <div className="inline-flex text-base px-4 py-1.5 rounded-xl border border-blue-400">
-                        <span className="bg-[linear-gradient(to_right,#DD7DDF,#E1CD86,#BBCB92,#71C2EF,#3BFFFF,#DD7DDF)] text-transparent bg-clip-text [-webkit-background-clip:text] font-medium">
+                      <div className="inline-flex text-base px-4 py-1.5 rounded-xl border border-white/20">
+                        <motion.span
+                          animate={{
+                            backgroundPositionX: "100%",
+                          }}
+                          transition={{
+                            repeat: Infinity,
+                            duration: 1,
+                            ease: "linear",
+                            repeatType: "loop",
+                          }}
+                          className="bg-[linear-gradient(to_right,#DD7DDF,#E1CD86,#BBCB92,#71C2EF,#3BFFFF,#DD7DDF,#E1CD86,#BBCB92,#71C2EF,#3BFFFF)] [background-size:200%]  text-transparent bg-clip-text [-webkit-background-clip:text] font-medium"
+                        >
                           Most Popular
-                        </span>
+                        </motion.span>
                       </div>
                     )}
                   </div>
