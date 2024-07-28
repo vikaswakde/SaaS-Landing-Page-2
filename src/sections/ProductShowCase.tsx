@@ -29,7 +29,7 @@ const ProductShowCase = () => {
   return (
     <section
       ref={sectionRef}
-      className="py-28 overflow-x-clip bg-gradient-to-b from-white to-[#D2DCFF] border"
+      className="py-28 overflow-x-clip bg-gradient-to-b from-white to-[#D2DCFF] "
     >
       <div className="container">
         <div className="sm:w-[33.75rem] mx-auto ">

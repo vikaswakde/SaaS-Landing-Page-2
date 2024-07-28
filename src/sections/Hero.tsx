@@ -48,14 +48,21 @@ const Hero = () => {
               alt="cogImage"
               className="md:absolute md:h-full md:w-auto md:max-w-none md:-left-6 lg:left-10"
               animate={{
+                // rotate: 360,
                 translateY: [-30, 30],
               }}
               transition={{
                 repeat: Infinity,
                 repeatType: "mirror",
                 ease: "easeInOut",
-                duration: 3,
+                duration: 2,
               }}
+              // style={{
+              //   originX: 0.5,
+              //   originY: 0.5,
+              //   originZ: 0.5,
+              //   transformOrigin: "center",
+              // }}
             />
             <motion.img
               src={cylinderImage.src}
