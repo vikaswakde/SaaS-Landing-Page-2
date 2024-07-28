@@ -2,32 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg tracking-tight font-medium;
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .btn-primary {
+    @apply bg-black text-white;
+  }
+  .btn-text {
+    @apply text-black bg-transparent border border-gray-400;
+  }
+  .logo-ticker-image {
+    @apply h-10 w-auto;
+  }
+  .tag {
+    @apply inline-flex border border-[#222]/10 w-fit py-1 px-3 rounded-xl text-sm tracking-tight;
+  }
+  .section-top-cover {
+    @apply w-[275px] md:w-[540px] mx-auto text-center;
+  }
+  .section-header {
+    @apply text-center font-bold text-[32px] md:text-5xl md:leading-[60px] tracking-tight leading-tight  bg-gradient-to-b from-black to-[#001354] text-transparent bg-clip-text
+    [-webkit-background-clip:text];
+  }
+  .section-paragraph {
+    @apply text-[#010D3E] text-[22px] tracking-tight leading-[30px] md:w-[480px] lg:w-[550px] text-center mt-5;
+  }
+  .card {
+    @apply p-10 border border-[#222222]/15 rounded-3xl shadow-[0_7px_14px_#EAEAEA] max-w-sm w-full;
   }
 }
